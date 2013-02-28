@@ -1,0 +1,165 @@
+(keyboard-translate ?\C-h ?\C-?)
+(global-set-key "\C-l" 'newline-and-indent)
+(global-set-key [?\C-\:] 'other-window)
+(global-set-key (kbd "C-x z") nil)
+(global-hl-line-mode 1)
+(show-paren-mode t)
+(global-set-key "\M-h" 'backward-kill-word)
+;; 背景色
+(custom-set-faces
+ '(default ((t
+             (:background "black" :foreground "#55FF55")
+             )))
+ '(cursor ((((class color)
+             (background dark))
+            (:background "#00AA00"))
+           (((class color)
+             (background light))
+            (:background "#999999"))
+           (t ())
+           )))
+
+
+;;template
+(setq  auto-insert-directory "~/.emacs.d/template/" )
+(load "autoinsert" t)
+(setq auto-insert-alist
+            (append '(("build.xml" . "build.xml")
+		      ("buildfx.xml" . "buildfx.xml")
+		         )auto-insert-alist ))
+(add-hook 'find-file-hooks 'auto-insert)
+;;linum
+;;(add-to-list 'load-path "~/.emacs.d/elisp/linum")
+;; (require 'linum)
+;; (global-linum-mode)
+
+;; ツールバーを非表示
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
+;;splitwindow
+(defun other-window-or-split ()
+  (interactive)
+  (when (one-window-p) (split-window-horizontally))
+  (other-window 1))
+(global-set-key (kbd "C-t") 'other-window-or-split)
+
+(line-number-mode 1)
+(column-number-mode 1)
+(defalias 'yes-or-no-p 'y-or-n-p)
+;;uniquify
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(setq uniquify-ignore-buffers-re "*[^*]+*")
+;;tempbuf
+(add-to-list 'load-path "~/.emacs.d/elisp/tempbuf")
+(require 'tempbuf)
+(add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
+(add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
+
+;;readonly
+;;(add-to-list 'load-path "~/.emacs.d/elisp/viewer")
+;;(require 'viewer)
+;; (viewer-stay-in-setup)
+;; (setq viewer-modeline-color-unwritable "tomato")
+;; (setq viewer-modeline-color-view "orange")
+;; (viewer-change-modeline-color-setup)
+;;(setq view-read-only t)
+
+;;shell-pop
+(add-to-list 'load-path "~/.emacs.d/elisp/shell-pop")
+(require 'shell-pop)
+(shell-pop-set-internal-mode "shell")
+(shell-pop-set-internal-mode-shell "/bin/bash")
+(global-set-key [f8] 'shell-pop)
+
+;;redo+
+;; (add-to-list 'load-path "~/.emacs.d/elisp/redo+")
+;; (require 'redo+)
+;; (global-set-key (kbd "M-/") 'redo)
+;; (setq undo-no-redo t)
+;; (setq undo-limit 10000)
+;; (setq undo-strong-limit 20000)
+
+
+
+
+;;(add-to-list 'load-path "~/.emacs.d/elisp/wb-line-number")
+;;(require 'wb-line-number)
+;;(setq truncate-partial-width-windows nil)
+;;(set-scroll-bar-mode nil)
+;;(setq wb-line-number-scroll-bar t)
+;;(wb-line-number-toggle)
+
+(global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+(setq skeleton-pair 1)
+
+;;Sticky
+(add-to-list 'load-path "~/.emacs.d/elisp/Sticky")
+(require 'sticky)
+(use-sticky-key "]" sticky-alist:ja)
+
+;;SKK
+(global-set-key (kbd "C-x C-j") 'skk-mode)
+
+;;auto-complete
+(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elisp//ac-dict")
+(ac-config-default)
+
+;;font-size
+(add-to-list 'default-frame-alist
+	     '(font . "-outline-Courier New-11-normal-normal-mono-12-*-*-*-c-*-iso8859-1"))
+
+;;autoinstall
+(add-to-list 'load-path "~/.emacs.d/elisp/auto-install")
+(require 'auto-install)
+(setq auto-install-directory "~/.emacs.d/elisp/")
+(auto-install-compatibility-setup)
+;;yasnipet
+(add-to-list 'load-path "~/.emacs.d/elisp/yasnippet-0.6.1c")
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/elisp/yasnippet-0.6.1c/snippets")
+
+;;anything
+(add-to-list 'load-path "~/.emacs.d/elisp/anything")
+(require 'anything-startup)
+(when (require 'anything nil t)
+(setq
+ anything-idle-delay 0.3
+anything-input-idle-delay 0.2
+anything-candidate-number-limit 100
+anything-quick-update t
+anything-enable-shortcuts 'alphabet)
+
+(require 'anything-match-plugin nil t)
+(when ( and (executable-find "cmigemo")
+	    (require 'migemo nil t))
+  (require 'anything-migemo nil t))
+
+(when (require 'anything-complete nil t)
+  (anything-lisp-complete-symbol-set-timer 150))
+
+(require 'anything-show-completion nil t)
+
+(when (require 'descbinds-anything nil t)
+  (descbinds-anything-install)))
+
+(global-set-key (kbd "C-x b") 'anything-for-files)
+
+
+;;ajc-java-complete
+(add-to-list 'load-path "~/.emacs.d/elisp/ajc-java-complete-master")
+(require 'ajc-java-complete-config)
+;;(add-hook 'java-mode-hook 'ajc-java-complete-mode) 
+
+
+;; flex-autopair
+(add-to-list 'load-path "~/.emacs.d/elisp/flex-autopair")
+(require 'flex-autopair)
+(flex-autopair-mode 1)
+
+
+

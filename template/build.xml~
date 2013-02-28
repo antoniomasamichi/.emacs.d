@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<project name="mymain" default="target1">
+
+  <target name="target1">
+    <javac srcdir="./src" destdir="./class" />
+  </target>
+
+</project>

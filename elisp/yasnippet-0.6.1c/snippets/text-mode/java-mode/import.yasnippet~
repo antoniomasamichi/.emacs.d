@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: import
+# key: im
+# binding: "keybinding"
+# expand-env: ((some-var some-value))
+# --
+import

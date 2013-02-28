@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<project name="mymain" default="compile">
+  <property environment="env"/>
+  <target name="compile">
+    <javac srcdir="./src" destdir="./class" />
+  </target>
+
+  <target name="exec">
+    <java classname="Main"
+	classpath="./class;${env.JAVA_HOME}/jre/lib/rt.jar"
+	  fork="yes"/>
+  </target>
+</project>

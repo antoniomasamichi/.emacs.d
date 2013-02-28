@@ -1,0 +1,18 @@
+;;; autoimport.el --- import class
+
+;; Copyright (C) 2013  
+
+;; Author:  <11236@SCA3554>
+;; Keywords: matching,
+
+(defun autoimport()
+  "auto import"
+  (push-mark)
+  (goto-char (point-min))
+  (if (search-forward (`"Application" t nil))
+      (goto-char (point-min))
+    (let ((oldbuf (current-buffer)))
+      (insert `"import javafx.application.Application;")
+      )))
+  
+  

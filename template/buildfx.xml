@@ -1,0 +1,26 @@
+<project name="javaFX" default="compile"
+	 xmlns:fx="javafx:com.sun.javafx.tools.ant">
+ <property environment="env"/>
+ <target name="compile">
+    <javac srcdir="./src" destdir="./class"
+	   classpath=".;${env.JAVA_HOME}/jre/lib/jfxrt.jar"/>
+ </target>
+
+  <target name="deploy" depends="compile">
+    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"              uri="javafx:com.sun.javafx.tools.ant"
+        classpath="${env.JAVA_HOME}/lib/ant-javafx.jar"/>
+ 
+    <fx:jar destfile="build_jar/Main.jar">
+      <fx:application mainClass="Main"/>
+      <fileset dir="./class/">
+        <include name="**"/>
+      </fileset>
+    </fx:jar>
+ 
+  </target>
+<target name="exec">
+  <java classname = "Main"
+	classpath="${env.JAVA_HOME}/jre/lib/rt.jar;${env.JAVA_HOME}/jre/lib/jfxrt.jar;./class"
+	fork="yes"/>
+</target>
+</project>

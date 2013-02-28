@@ -1,0 +1,15 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("OpenGL"
+ (filename . "d:/C++/OpenGL/")
+ (front-context-string)
+ (rear-context-string . " 02-14 16:36 ..\n")
+ (position . 168))
+("JAVA Workspace"
+ (filename . "d:/JAVA/workspace/")
+ (front-context-string . "designpattern\n  ")
+ (rear-context-string . "  0 01-04 13:19 ")
+ (position . 230))
+)

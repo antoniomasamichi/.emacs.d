@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: app
+# key: app
+# binding: "keybinding"
+# expand-env: ((some-var some-value))
+# --
+application

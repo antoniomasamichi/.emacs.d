@@ -1,0 +1,32 @@
+;; Object sampleproject/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "sampleproject/"
+  :tables (list 
+   (semanticdb-table "HelloWorld.java"
+    :major-mode 'java-mode
+    :tags 
+        '( ("HelloWorld" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [56 69]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [31 113]))                  
+                :type "class")
+                nil [1 115]))          
+    :file "HelloWorld.java"
+    :pointmax 116
+    :fsize 115
+    :lastmodtime '(20658 61761)
+    :unmatched-syntax '((thing 26 . 26) (thing 26 . 26) (thing 25 . 26) (thing 25 . 26) (thing 25 . 26) (thing 25 . 25) (thing 14 . 14))
+    )
+   )
+  :file "!home!11236!workspace!JAVA!sampleproject!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.0"
+  )
